@@ -1,0 +1,5 @@
+[tool.taskipy.task]
+
+run = 'taskkill /f /im '
+
+test = ''
