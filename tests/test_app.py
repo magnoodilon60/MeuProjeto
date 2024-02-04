@@ -3,7 +3,7 @@ from time import sleep
 import pytest
 import subprocess
 from selenium.webdriver.common.by import By
-
+import os
 
 
 @pytest.fixture
@@ -52,6 +52,23 @@ def test_check_streamlit_h1(driver):
     # Verificar se o texto do elemento <h1> da página
     expect_text = "Insira o seu excel para validação"
     assert h1_element.text == expect_text
+
+
+def test_check_usuario_pode_inserir_um_excel_e_receber_uma_mensagem(driver):
+    # Acessar a página do Streamlite
+    driver.get("http://localhost:8501")
+    # Aguardar para garantir que página foi carregada
+    sleep(5)
+
+    # Realizar o upload do arquivo de sucesso
+    sucess_file_path = os.path.abspath("data/arquivo_excel.xlsx")
+    driver.find_element(By.CSS_SELECTOR, 'input[type="file"]').send_keys(sucess_file_path)
+
+    # Aguagardar a mensagem de sucesso
+    sleep(5)
+    assert "O schema do arquivo está correto!! " in driver.page_source
+
+
 
 # # Precisamos definir qual driver vamos utilizar
 # driver = webdriver.Chrome()
