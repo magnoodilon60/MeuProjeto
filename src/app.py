@@ -6,6 +6,6 @@ st.set_page_config(
 )
 
 # titulo do app
-st.title("vai palmeiras")
+st.title("Insira o seu excel para validação")
 
 
