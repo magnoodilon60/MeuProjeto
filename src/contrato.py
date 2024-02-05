@@ -13,8 +13,11 @@ class CategoriaEnum(str, Enum):
 
 
 class Vendas(BaseModel):
+    
     """
     Modelo de dados para as vendas;
+
+
     args:
         emial (str): emial do comprador
         data (int): data da compra
